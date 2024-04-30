@@ -13,7 +13,7 @@ COPY azurite-first-setup /usr/bin
 
 #Clean up packages to use the ones I want. Set automated staged updates.
 RUN rpm-ostree override remove firefox firefox-langpacks && \
-    rpm-ostree install distrobox swtpm qemu-kvm libvirt virt-manager libheif-freeworld kf6-kimageformats qt6-qtimageformats gwenview okular kate fish digikam krita && \
+    rpm-ostree install distrobox swtpm qemu-kvm libvirt virt-manager libheif-freeworld kf6-kimageformats qt6-qtimageformats gwenview kate fish && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     rm -rf \
