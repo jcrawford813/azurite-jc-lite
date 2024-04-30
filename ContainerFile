@@ -1,3 +1,5 @@
+ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-40}"
+
 ## Begin with a Kinoite Base Image
 FROM quay.io/fedora/fedora-kinoite:${FEDORA_MAJOR_VERSION}
 
