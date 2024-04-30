@@ -127,6 +127,9 @@ if test -e /bin/fish; then
   fi
 fi
 
+mkdir -p "$HOME"/.config/azurite/
+touch "$HOME"/.config/azurite/firstboot-done
+
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Firstboot Configuration Error"
