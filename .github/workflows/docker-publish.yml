@@ -91,7 +91,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       # Build and push image using Buildah
-      - name: Build and push Docker image
+      - name: Build Docker image
         id: build
         uses: redhat-actions/buildah-build@v2
         with:
@@ -105,7 +105,7 @@ jobs:
           build-args: |
             FEDORA_MAJOR_VERSION=${{ env.FEDORA_VERSION }}
           labels:
-          oci: false
+          oci: true
       
       # Push the image to GitHub's repo.
       - name: Push To GHCR
@@ -140,7 +140,7 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         env:
           # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
-          TAGS: ${{ steps.meta.outputs.tags }}
+          TAGS: ${{ steps.push.outputs.digest }}
           DIGEST: ${{ steps.push.outputs.digest }}
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
