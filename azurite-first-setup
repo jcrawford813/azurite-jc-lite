@@ -1,0 +1,133 @@
+#!/bin/sh
+
+if test -e "$HOME"/.config/azurite/firstboot-done; then
+    echo "User Setup is already done."
+    exit 0
+fi
+
+echo "# Waiting for Internet connection"
+until /usr/bin/ping -q -c 1 flathub.org; do sleep 1; done
+echo "00"
+
+echo "# Removing Filtered Flathub Repository"
+/usr/bin/flatpak remote-delete flathub --force ||:
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Removing Filtered Flathub Repo Failed"
+        exit 1
+fi
+echo "3"
+
+echo "# Enabling Flathub Repository"
+/usr/bin/flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Adding Flathub Repo Failed"
+        exit 1
+fi
+echo "5"
+
+echo "# Replacing Fedora Flatpaks with Flathub Ones (this may take a while)"
+/usr/bin/flatpak install --user --noninteractive --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Replacing Fedora Flatpaks Failed"
+        exit 1
+fi
+echo "20"
+
+echo "Removing all preinstalled Flatpaks"
+/usr/bin/flatpak remove --system --noninteractive --all ||:
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Removing all preinstalled flatpaks failed"
+        exit 1
+fi
+
+echo "# Removing Fedora Flatpak Repository"
+/usr/bin/flatpak remote-delete fedora --force ||:
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Removing Fedora Flatpak Repo Failed"
+        exit 1
+fi
+echo "25"
+
+echo "# Installing Firefox"
+/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Firefox Failed"
+        exit 1
+fi
+echo "30"
+
+echo "# Installing Thunderbird"
+/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.Thunderbird
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Thunderbird Failed"
+        exit 1
+fi
+echo "40"
+
+echo "# Installing LibreOffice"
+/usr/bin/flatpak install --user --noninteractive flathub org.libreoffice.LibreOffice
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing LibreOffice Failed"
+        exit 1
+fi
+echo "50"
+
+echo "# Installing Steam"
+/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Steam Failed"
+        exit 1
+fi
+echo "60"
+
+echo "# Installing Heroic Launcher"
+/usr/bin/flatpak install --user --noninteractive flathub com.heroicgameslauncher.hgl
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Heroic Failed"
+        exit 1
+fi
+echo "70"
+
+echo "# Installing Cider"
+/usr/bin/flatpak install --user --noninteractive flathub sh.cider.Cider
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Cider Failed"
+        exit 1
+fi
+echo "80"
+
+echo "# Installing Synology Drive Client"
+/usr/bin/flatpak install --user --noninteractive flathub com.synology.SynologyDrive
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Synology Drive Failed"
+        exit 1
+fi
+echo "70"
+
+echo "# Setting fish as default shell"
+
+if test -e /bin/fish; then
+  chsh -s /bin/fish
+  if [ "$?" != 0 ] ; then
+      kdialog --error \
+      "Cannot change shell to fish."
+      exit 1;
+  fi
+fi
+
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Firstboot Configuration Error"
+fi
