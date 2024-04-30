@@ -8,11 +8,11 @@ RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-
 RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=110/}' /etc/yum.repos.d/rpmfusion-*-updates-testing.repo
 
 ##COPY etc /etc
-##COPY usr /usr
+COPY usr /usr
 
 #Clean up packages to use the ones I want. Set automated staged updates.
 RUN rpm-ostree override remove firefox firefox-langpacks && \
-    rpm-ostree install distrobox swtpm qemu-kvm libvirt virt-manager libheif-freeworld kf6-kimageformats qt6-qtimageformats gwenview okular  && \
+    rpm-ostree install distrobox swtpm qemu-kvm libvirt virt-manager libheif-freeworld kf6-kimageformats qt6-qtimageformats gwenview okular kate fish && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     rm -rf \
