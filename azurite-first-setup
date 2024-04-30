@@ -54,6 +54,15 @@ if [ "$?" != 0 ] ; then
 fi
 echo "30"
 
+echo "# Installing Neochat"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.neochat
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Neochat Failed"
+        exit 1
+fi
+echo "35"
+
 echo "# Installing Thunderbird"
 /usr/bin/flatpak install --user --noninteractive flathub org.mozilla.Thunderbird
 if [ "$?" != 0 ] ; then
@@ -62,6 +71,15 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "40"
+
+echo "# Installing Digikam"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.digikam
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Digikam Failed"
+        exit 1
+fi
+echo "45"
 
 echo "# Installing LibreOffice"
 /usr/bin/flatpak install --user --noninteractive flathub org.libreoffice.LibreOffice
@@ -72,6 +90,15 @@ if [ "$?" != 0 ] ; then
 fi
 echo "50"
 
+echo "# Installing Krita"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.krita
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Firefox Failed"
+        exit 1
+fi
+echo "55"
+
 echo "# Installing Steam"
 /usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
 if [ "$?" != 0 ] ; then
@@ -81,6 +108,15 @@ if [ "$?" != 0 ] ; then
 fi
 echo "60"
 
+echo "# Installing skanpage"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.skanpage
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Skanpage Failed"
+        exit 1
+fi
+echo "65"
+
 echo "# Installing Heroic Launcher"
 /usr/bin/flatpak install --user --noninteractive flathub com.heroicgameslauncher.hgl
 if [ "$?" != 0 ] ; then
@@ -89,6 +125,15 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 echo "70"
+
+echo "# Installing Elisa"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.elisa
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Elisa Failed"
+        exit 1
+fi
+echo "75"
 
 echo "# Installing Cider"
 /usr/bin/flatpak install --user --noninteractive flathub sh.cider.Cider
