@@ -151,7 +151,16 @@ if [ "$?" != 0 ] ; then
           "Installing Synology Drive Failed"
         exit 1
 fi
-echo "70"
+echo "85"
+
+echo "# Installing Okular"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.okular
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Okular Failed"
+        exit 1
+fi
+echo "85"
 
 echo "# Setting fish as default shell"
 
@@ -159,8 +168,7 @@ if test -e /bin/fish; then
   chsh -s /bin/fish
   if [ "$?" != 0 ] ; then
       kdialog --error \
-      "Cannot change shell to fish."
-      exit 1;
+      "Cannot change shell to fish. You'll need to do it yourself."
   fi
 fi
 

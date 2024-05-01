@@ -1,19 +1,18 @@
 # Custom Atomic Image "Azurite"
 
-This is my personal atomic image that I use to build my own flavor of Fedora Kinoite (KDE Atomic). I have taken the latest (Version 40, as of right now) Kinoite image, removed Firefox, and added the following:
+This is my personal atomic image that I use to build my own flavor of [Fedora Kinoite](https://fedoraproject.org/atomic-desktops/kinoite/) (KDE Atomic). I have taken the latest (Version 40, as of right now) Kinoite image, removed Firefox, and added the following:
 
 - Distrobox
 - QEMU, libVirt, and virt-manager
 - RPM Fusion Repos for libheif
 - Kate
 - Gwenview (Doesn't support heic from iPhones in the Flatpak)
-- Okular
 - Fish
-- Custom Wallpapers from UBlue (I really like the dinosaurs)
+- Custom Wallpapers from Bluefin (I really like the dinosaurs)
 
-In addition, a setup script (that sometimes fails when first starting) will install flathub, and the add a few packages that I use from day to day.
+In addition, a setup script (that sometimes fails when first starting) will install flathub, and then add a few packages that I use from day to day.
 
-I was inspired and used (*ahem* stole) the setup from Jorge Castro, based on his post [here](https://www.ypsidanger.com/building-your-own-fedora-silverblue-image/). As such, feel free to take this work and build your own. If you'd like to just use this image, without any support, guarantees, or warranty, you can do the following:
+I was inspired by, and used (*ahem* stole), the setup from [Jorge Castro](https://www.ypsidanger.com), based on his post [here](https://www.ypsidanger.com/building-your-own-fedora-silverblue-image/). As such, feel free to take this work and build your own. If you'd like to just use this image, without any support, guarantees, or warranty, you can do the following:
 
 First, do an install of the latest version of Kinoite or Silverblue, and perform a full update:
 
