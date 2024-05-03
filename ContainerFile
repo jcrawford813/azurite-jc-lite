@@ -18,5 +18,10 @@ RUN rpm-ostree override remove firefox firefox-langpacks && \
     systemctl enable rpm-ostreed-automatic.timer && \
     rm -rf \
         /tmp/* \
-        /var/* && \
-    ostree container commit
+        /var/*
+
+#SELinux Issues with F40, sometimes this helps to address them.
+RUN restorecon -rv /var && \
+    restorecon -rv /usr/bin
+
+RUN ostree container commit
