@@ -11,6 +11,7 @@ COPY etc /etc
 COPY usr /usr
 COPY azurite-first-setup /usr/bin
 
+RUN mkdri /usr/local/bin
 RUN mkdir /usr/local/bin/overrides
 
 #Clean up packages to use the ones I want. Set automated staged updates.
