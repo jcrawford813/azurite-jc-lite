@@ -14,8 +14,7 @@ COPY azurite-first-setup /usr/bin
 #Clean up packages to use the ones I want. Set automated staged updates.
 RUN rpm-ostree override remove \
         firefox \
-        firefox-langpacks && \
-    rpm-ostree override remove \
+        firefox-langpacks \
         plasma-discover-rpm-ostree \
         mesa-va-drivers && \
     rpm-ostree install \
@@ -31,8 +30,7 @@ RUN rpm-ostree override remove \
         gwenview \
         kate \
         fish \
-        pipewire-codec-aptx && \
-    rpm-ostree install \
+        pipewire-codec-aptx \
         icoutils \
         kcron \
         kio-admin \
