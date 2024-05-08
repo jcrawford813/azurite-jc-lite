@@ -11,11 +11,6 @@ COPY etc /etc
 COPY usr /usr
 COPY azurite-first-setup /usr/bin
 
-## mkdir -p throws an error, so we need to build the whole tree manually.
-#RUN mkdir /usr/local
-RUN mkdir /usr/local/bin
-RUN mkdir /usr/local/bin/overrides
-
 #Clean up packages to use the ones I want. Set automated staged updates.
 RUN rpm-ostree override remove \
         firefox \
