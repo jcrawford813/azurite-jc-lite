@@ -12,7 +12,7 @@ COPY usr /usr
 COPY azurite-first-setup /usr/bin
 
 ## mkdir -p throws an error, so we need to build the whole tree manually.
-RUN mkdir /usr/local
+#RUN mkdir /usr/local
 RUN mkdir /usr/local/bin
 RUN mkdir /usr/local/bin/overrides
 
