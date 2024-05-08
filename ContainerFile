@@ -15,6 +15,9 @@ COPY azurite-first-setup /usr/bin
 RUN rpm-ostree override remove \
         firefox \
         firefox-langpacks && \
+    rpm-ostree override remove \
+        plasma-discover-rpm-ostree \
+        mesa-va-drivers && \
     rpm-ostree install \
         distrobox \
         swtpm \
@@ -36,9 +39,6 @@ RUN rpm-ostree override remove \
         ksshaskpass \
         mesa-va-drivers-freeworld.x86_64 \
         libva-utils && \
-    rpm-ostree override remove \
-        plasma-discover-rpm-ostree \
-        mesa-va-drivers && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     rm -rf \
