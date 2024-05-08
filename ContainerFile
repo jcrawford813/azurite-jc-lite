@@ -13,15 +13,11 @@ COPY azurite-first-setup /usr/bin
 
 #Clean up packages to use the ones I want. Set automated staged updates.
 RUN rpm-ostree override remove firefox firefox-langpacks && \
-    rpm-ostree install distrobox swtpm qemu-kvm libvirt virt-manager libheif-freeworld kf6-kimageformats qt6-qtimageformats gwenview kate fish && \
+    rpm-ostree install distrobox swtpm qemu-kvm libvirt virt-manager libheif-freeworld kf6-kimageformats qt6-qtimageformats gwenview kate fish mesa-freeworld pipewire-codec-aptx && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     rm -rf \
         /tmp/* \
         /var/*
-
-#SELinux Issues with F40, sometimes this helps to address them.
-RUN restorecon -rv /var && \
-    restorecon -rv /usr/bin
 
 RUN ostree container commit
