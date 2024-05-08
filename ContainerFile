@@ -11,6 +11,8 @@ COPY etc /etc
 COPY usr /usr
 COPY azurite-first-setup /usr/bin
 
+RUN makedir -p /usr/local/bin/overrides
+
 #Clean up packages to use the ones I want. Set automated staged updates.
 RUN rpm-ostree override remove \
         firefox \
