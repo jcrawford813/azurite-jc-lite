@@ -16,7 +16,7 @@ RUN rpm-ostree override remove \
         firefox \
         firefox-langpacks \
         plasma-discover-rpm-ostree \
-        mesa-va-drivers && \
+        #mesa-va-drivers && \
     rpm-ostree install \
         distrobox \
         swtpm \
@@ -35,9 +35,10 @@ RUN rpm-ostree override remove \
         kcron \
         kio-admin \
         ksshaskpass \
-        mesa-va-drivers-freeworld \
-        mesa-vdpau-drivers-freeworld \
+        #mesa-va-drivers-freeworld \
+        #mesa-vdpau-drivers-freeworld \
         libva-utils \
+        corectrl \
         ffmpeg-free && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
