@@ -15,7 +15,7 @@ COPY azurite-first-setup /usr/bin
 RUN rpm-ostree override remove \
         firefox \
         firefox-langpacks \
-        plasma-discover-rpm-ostree \
+        plasma-discover-rpm-ostree && \
         #mesa-va-drivers && \
     rpm-ostree install \
         distrobox \
