@@ -15,8 +15,8 @@ COPY azurite-first-setup /usr/bin
 RUN rpm-ostree override remove \
         firefox \
         firefox-langpacks \
-        plasma-discover-rpm-ostree && \
-        #mesa-va-drivers && \
+        plasma-discover-rpm-ostree \
+        mesa-va-drivers && \
     rpm-ostree install \
         distrobox \
         swtpm \
@@ -35,8 +35,8 @@ RUN rpm-ostree override remove \
         kcron \
         kio-admin \
         ksshaskpass \
-        #mesa-va-drivers-freeworld \
-        #mesa-vdpau-drivers-freeworld \
+        mesa-va-drivers-freeworld \
+        mesa-vdpau-drivers-freeworld \
         libva-utils \
         corectrl \
         ffmpeg-free && \
