@@ -39,6 +39,9 @@ RUN rpm-ostree override remove \
         mesa-vdpau-drivers-freeworld \
         libva-utils \
         corectrl \
+        krdp-server \
+        krdp \
+        krdc \
         ffmpeg-free && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
