@@ -6,8 +6,10 @@ This is my personal atomic image that I use to build my own flavor of [Fedora Ki
 - QEMU, libVirt, and virt-manager
 - RPM Fusion Repos for libheif
 - Kate
+- krdp
 - Gwenview (Doesn't support heic from iPhones in the Flatpak)
 - Fish
+- Accelerated Drivers for Video
 - Custom Wallpapers from Bluefin (I really like the dinosaurs)
 
 In addition, a setup script (that sometimes fails when first starting) will install flathub, and then add a few packages that I use from day to day.
