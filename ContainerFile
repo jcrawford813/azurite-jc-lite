@@ -44,7 +44,6 @@ RUN rpm-ostree override remove \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable swtpm-workaround && \
-    rpm-ostree kargs --append='amdgpu.ppfeaturemask=0xffffffff' && \
     rm -rf \
         /tmp/* \
         /var/*
