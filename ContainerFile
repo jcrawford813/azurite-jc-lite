@@ -40,6 +40,7 @@ RUN rpm-ostree override remove \
         libva-utils \
         corectrl \
         krdp \
+        freerdp \
         ffmpeg-free && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
