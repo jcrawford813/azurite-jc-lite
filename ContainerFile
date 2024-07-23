@@ -41,7 +41,7 @@ RUN rpm-ostree override remove \
         libva-utils \
         corectrl \
         krdp \
-        elisa \
+        elisa-player \
         libreoffice \
         digikam \
         krita \
