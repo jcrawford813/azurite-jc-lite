@@ -28,6 +28,7 @@ RUN rpm-ostree override remove \
         kf6-kimageformats \
         qt6-qtimageformats \
         gwenview \
+        okular \
         kate \
         fish \
         pipewire-codec-aptx \
@@ -40,6 +41,13 @@ RUN rpm-ostree override remove \
         libva-utils \
         corectrl \
         krdp \
+        elisa \
+        libreoffice \
+        digikam \
+        krita \
+        kcalc \
+        haruna \
+        neochat \
         freerdp \
         ffmpeg-free && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
