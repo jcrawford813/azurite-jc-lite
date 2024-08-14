@@ -36,20 +36,11 @@ RUN rpm-ostree override remove \
         kcron \
         kio-admin \
         ksshaskpass \
-        mesa-va-drivers-freeworld \
-        mesa-vdpau-drivers-freeworld \
-        libva-utils \
         corectrl \
         krdp \
         elisa-player \
-        libreoffice \
-        digikam \
-        krita \
         kcalc \
-        haruna \
-        neochat \
-        freerdp \
-        ffmpeg-free && \
+        neochat && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable swtpm-workaround && \
