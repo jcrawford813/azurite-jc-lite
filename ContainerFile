@@ -30,6 +30,7 @@ RUN rpm-ostree override remove \
         gwenview \
         okular \
         kate \
+        skanpage \
         fish \
         pipewire-codec-aptx \
         icoutils \

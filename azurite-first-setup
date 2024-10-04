@@ -98,17 +98,25 @@ if [ "$?" != 0 ] ; then
           "Installing Synology Drive Failed"
         exit 1
 fi
+
 echo "80"
 
-echo "# Setting fish as default shell"
-
-if test -e /bin/fish; then
-  chsh -s /bin/fish
-  if [ "$?" != 0 ] ; then
-      kdialog --error \
-      "Cannot change shell to fish. You'll need to do it yourself."
-  fi
+echo "# Installing Digikam"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.Digikam
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Digikam Failed"
+        exit 1
 fi
+
+echo "# Installing Krita"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.Krita
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Krita Failed"
+        exit 1
+fi
+
 echo "90"
 
 mkdir -p "$HOME"/.config/azurite/
