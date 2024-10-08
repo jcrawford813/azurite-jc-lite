@@ -19,6 +19,7 @@ RUN rpm-ostree override remove \
         mesa-va-drivers && \
     rpm-ostree install \
         distrobox \
+        rsms-inter-fonts \
         swtpm \
         qemu-kvm \
         libvirt \
