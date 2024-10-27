@@ -5,7 +5,7 @@ FROM quay.io/fedora/fedora-kinoite:${FEDORA_MAJOR_VERSION}
 
 ## Add and enable RPM Fusion Repos
 RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=110/}' /etc/yum.repos.d/rpmfusion-*-updates-testing.repo
+#RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=110/}' /etc/yum.repos.d/rpmfusion-*-updates-testing.repo
 
 COPY etc /etc
 COPY usr /usr
@@ -15,17 +15,16 @@ COPY azurite-first-setup /usr/bin
 RUN rpm-ostree override remove \
         firefox \
         firefox-langpacks \
-        plasma-discover-rpm-ostree \
-        mesa-va-drivers && \
-    rpm-ostree install \
+        plasma-discover-rpm-ostree
+
+#Add extra packages
+RUN  rpm-ostree install \
         distrobox \
         rsms-inter-fonts \
         swtpm \
         qemu-kvm \
         libvirt \
-        virt-manager \
-        libheif-freeworld \
-        libheif-tools \
+        virt-manager \ 
         kf6-kimageformats \
         qt6-qtimageformats \
         gwenview \
@@ -33,7 +32,6 @@ RUN rpm-ostree override remove \
         kate \
         skanpage \
         fish \
-        pipewire-codec-aptx \
         icoutils \
         kcron \
         kio-admin \
@@ -42,7 +40,13 @@ RUN rpm-ostree override remove \
         krdp \
         elisa-player \
         kcalc \
-        neochat && \
+        neochat
+
+#Add RPMFusion packages and setup auto updates
+RUN rpm-ostree install \
+    libheif-freeworld \
+    libheif-tools \
+    pipewire-codec-aptx && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable swtpm-workaround && \
