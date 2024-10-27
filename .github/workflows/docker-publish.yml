@@ -11,7 +11,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  FEDORA_VERSION: 40
+  FEDORA_VERSION: 41
 
 
 jobs:
@@ -27,9 +27,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        major_version: [40]
+        major_version: [41]
         include:
-          - major_version: 40
+          - major_version: 41
             is_latest: true
             is_stable: true
     
