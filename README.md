@@ -1,15 +1,9 @@
 # Custom Atomic Image "Azurite"
 
-This is my personal atomic image that I use to build my own flavor of [Fedora Kinoite](https://fedoraproject.org/atomic-desktops/kinoite/) (KDE Atomic). I have taken the latest (Version 40, as of right now) Kinoite image, removed Firefox, and added the following:
+This is my personal atomic image that I use to build my own flavor of [Fedora Kinoite](https://fedoraproject.org/atomic-desktops/kinoite/) (KDE Atomic). I have taken the latest (Version 41, as of right now) Kinoite image, removed Firefox, and added the following:
 
 - Distrobox
 - QEMU, libVirt, and virt-manager
-- RPM Fusion Repos for libheif
-- Kate
-- krdp
-- Gwenview (Doesn't support heic from iPhones in the Flatpak)
-- Fish
-- Accelerated Drivers for Video
 - Custom Wallpapers from Bluefin (I really like the dinosaurs)
 
 In addition, a setup script (that sometimes fails when first starting) will install flathub, and then add a few packages that I use from day to day.
@@ -25,7 +19,7 @@ systemctl reboot
 
 Then you can rebase to this untrusted image:
 ```
-rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/jcrawford813/azurite-jc:latest
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/jcrawford813/azurite-jc:41
 systemctl reboot
 ```
 
