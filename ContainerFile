@@ -19,7 +19,7 @@ RUN  rpm-ostree install \
         rsms-inter-fonts \
         virt-manager \ 
         ksshaskpass \
-        corectrl \
+        corectrl
 
 #Add RPMFusion packages and setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
