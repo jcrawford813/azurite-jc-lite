@@ -17,7 +17,10 @@ RUN rpm-ostree override remove \
 RUN  rpm-ostree install \
         distrobox \
         rsms-inter-fonts \
-        virt-manager \ 
+        libvirt-daemon-config-network \
+        libvirt-daemon-kvm \
+        qemu-kvm \ 
+        virt-manager \
         ksshaskpass \
         corectrl
 
