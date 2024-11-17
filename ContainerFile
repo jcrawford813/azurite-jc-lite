@@ -3,10 +3,6 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-41}"
 ## Begin with a Kinoite Base Image
 FROM quay.io/fedora/fedora-kinoite:${FEDORA_MAJOR_VERSION}
 
-## Add and enable RPM Fusion Repos
-RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-#RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=110/}' /etc/yum.repos.d/rpmfusion-*-updates-testing.repo
-
 COPY etc /etc
 COPY usr /usr
 COPY azurite-first-setup /usr/bin
@@ -21,33 +17,12 @@ RUN rpm-ostree override remove \
 RUN  rpm-ostree install \
         distrobox \
         rsms-inter-fonts \
-        swtpm \
-        qemu-kvm \
-        libvirt \
         virt-manager \ 
-        kf6-kimageformats \
-        qt6-qtimageformats \
-        gwenview \
-        okular \
-        kate \
-        skanpage \
-        fish \
-        icoutils \
-        kcron \
-        kio-admin \
         ksshaskpass \
         corectrl \
-        krdp \
-        elisa-player \
-        kcalc \
-        neochat
 
 #Add RPMFusion packages and setup auto updates
-RUN rpm-ostree install \
-    libheif-freeworld \
-    libheif-tools \
-    pipewire-codec-aptx && \
-    sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
+RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable swtpm-workaround && \
     rm -rf \
