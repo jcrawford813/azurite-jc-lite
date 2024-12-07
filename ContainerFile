@@ -22,6 +22,12 @@ RUN  rpm-ostree install \
         qemu-kvm \ 
         virt-manager \
         ksshaskpass \
+        kmail \
+        akonadi \
+        digikam \
+        krita \
+        neochat \
+        skanpage \
         corectrl
 
 #Add RPMFusion packages and setup auto updates
