@@ -7,13 +7,18 @@ COPY etc /etc
 COPY usr /usr
 COPY azurite-first-setup /usr/bin
 
+#Add rpm-fusion repos to get proper image formats.
+RUN rpm-ostree install \
+  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 #Clean up packages to use the ones I want. Set automated staged updates.
 RUN rpm-ostree override remove \
         firefox \
         firefox-langpacks \
         plasma-discover-rpm-ostree
 
-#Add extra packages
+#Add extra core packages
 RUN  rpm-ostree install \
         distrobox \
         rsms-inter-fonts \
@@ -22,13 +27,23 @@ RUN  rpm-ostree install \
         qemu-kvm \ 
         virt-manager \
         ksshaskpass \
+        corectrl
+
+#Add rpm-fusion packages
+RUN rpm-ostree install \
+        libheif-freeworld \
+        libheif-tools
+
+#Add KDE Apps that have to be layered to work well.
+RUN rpm-ostree install \
         kmail \
         akonadi \
-        digikam \
-        krita \
-        neochat \
         skanpage \
-        corectrl
+        kate \
+        kwrite \
+        okular \
+        gwenview \
+        qt6-qtimageformats
 
 #Add RPMFusion packages and setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \

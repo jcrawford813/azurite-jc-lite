@@ -46,7 +46,7 @@ fi
 echo "25"
 
 echo "# Installing Firefox"
-/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.mozilla.firefox
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Firefox Failed"
@@ -55,17 +55,8 @@ fi
 echo "30"
 
 
-echo "# Installing Thunderbird"
-/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.Thunderbird
-if [ "$?" != 0 ] ; then
-        kdialog --error \
-          "Installing Thunderbird Failed"
-        exit 1
-fi
-echo "40"
-
 echo "# Installing Steam"
-/usr/bin/flatpak install --user --noninteractive flathub com.valvesoftware.Steam
+/usr/bin/flatpak install --user --or-update --noninteractive flathub com.valvesoftware.Steam
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Steam Failed"
@@ -74,7 +65,7 @@ fi
 echo "50"
 
 echo "# Installing Heroic Launcher"
-/usr/bin/flatpak install --user --noninteractive flathub com.heroicgameslauncher.hgl
+/usr/bin/flatpak install --user --or-update --noninteractive flathub com.heroicgameslauncher.hgl
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Heroic Failed"
@@ -83,7 +74,7 @@ fi
 echo "60"
 
 echo "# Installing Cider"
-/usr/bin/flatpak install --user --noninteractive flathub sh.cider.Cider
+/usr/bin/flatpak install --user --or-update --noninteractive flathub sh.cider.Cider
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Cider Failed"
@@ -92,7 +83,7 @@ fi
 echo "70"
 
 echo "# Installing Synology Drive Client"
-/usr/bin/flatpak install --user --noninteractive flathub com.synology.SynologyDrive
+/usr/bin/flatpak install --user --or-update --noninteractive flathub com.synology.SynologyDrive
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Synology Drive Failed"
@@ -102,7 +93,7 @@ fi
 echo "80"
 
 echo "# Installing Digikam"
-/usr/bin/flatpak install --user --noninteractive flathub org.kde.Digikam
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.Digikam
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Digikam Failed"
@@ -110,7 +101,7 @@ if [ "$?" != 0 ] ; then
 fi
 
 echo "# Installing Krita"
-/usr/bin/flatpak install --user --noninteractive flathub org.kde.Krita
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.Krita
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Krita Failed"
