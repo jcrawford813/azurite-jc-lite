@@ -93,7 +93,7 @@ fi
 echo "80"
 
 echo "# Installing Digikam"
-/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.Digikam
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.digikam
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Digikam Failed"
@@ -101,7 +101,7 @@ if [ "$?" != 0 ] ; then
 fi
 
 echo "# Installing Krita"
-/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.Krita
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.krita
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Krita Failed"
