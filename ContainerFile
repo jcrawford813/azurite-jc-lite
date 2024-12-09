@@ -34,7 +34,7 @@ RUN rpm-ostree install \
         libheif-freeworld \
         libheif-tools
 
-#Add KDE Apps that have to be layered to work well.
+#Add KDE Apps that have to be layered to work well. LO is in here, because I prefer the KDE dialogs, which you don't get in flatpak.
 RUN rpm-ostree install \
         kmail \
         akonadi \
@@ -43,6 +43,8 @@ RUN rpm-ostree install \
         kwrite \
         okular \
         gwenview \
+        karp \
+        libreoffice \
         qt6-qtimageformats
 
 #Add RPMFusion packages and setup auto updates

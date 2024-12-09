@@ -4,6 +4,8 @@ This is my personal atomic image that I use to build my own flavor of [Fedora Ki
 
 - Distrobox
 - QEMU, libVirt, and virt-manager
+- RPMFusion and Image Codecs
+- Some KDE tools that work better native than in distrobox and flatpak
 - Custom Wallpapers from Bluefin (I really like the dinosaurs)
 
 In addition, a setup script (that sometimes fails when first starting) will install flathub, and then add a few packages that I use from day to day.
