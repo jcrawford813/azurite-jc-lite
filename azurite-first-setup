@@ -1,4 +1,5 @@
 #!/bin/sh
+SUDO_ASKPASS='/usr/bin/ksshaskpass'
 
 if test -e "$HOME"/.config/azurite/firstboot-done; then
     echo "User Setup is already done."

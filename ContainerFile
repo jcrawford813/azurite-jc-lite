@@ -53,8 +53,6 @@ RUN rpm-ostree install \
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable swtpm-workaround && \
-    mkdir /mnt/backup && \
-    chown group:wheel /mnt/backup && \
     rm -rf \
         /tmp/* \
         /var/*
