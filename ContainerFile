@@ -7,11 +7,12 @@ COPY etc /etc
 COPY usr /usr
 COPY azurite-first-setup /usr/bin
 
-#Clean up packages to use the ones I want. Set automated staged updates.
+#Clean up packages to use the ones I want.
 RUN rpm-ostree override remove \
         firefox \
         firefox-langpacks \
-        plasma-discover-rpm-ostree
+        plasma-discover-rpm-ostree \
+        toolbox
 
 #Add extra core packages
 RUN  rpm-ostree install \
@@ -25,7 +26,7 @@ RUN  rpm-ostree install \
         ksshaskpass \
         corectrl
 
-#Add KDE Apps that have to be layered to work well. LO is in here, because I prefer the KDE dialogs, which you don't get in flatpak.
+#Add KDE Apps that have to be layered to work well. LO is in here because I prefer the KDE dialogs, which you don't get in flatpak.
 RUN rpm-ostree install \
         kmail \
         akonadi \
@@ -35,10 +36,9 @@ RUN rpm-ostree install \
         karp \
         libreoffice \
         vorta \
-        borgbackup \
-        qt6-qtimageformats
+        borgbackup
 
-#Add RPMFusion packages and setup auto updates
+#Setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable swtpm-workaround && \
