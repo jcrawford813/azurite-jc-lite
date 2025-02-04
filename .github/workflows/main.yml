@@ -101,6 +101,7 @@ jobs:
             ${{ steps.generate-tags.outputs.sha_short }}
           build-args: |
             FEDORA_MAJOR_VERSION=${{ inputs.fedora_version }}
+            OS_VERSION=${{ inputs.fedora_version }}
           labels:
           oci: true
       
