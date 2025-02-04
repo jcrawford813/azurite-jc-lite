@@ -1,18 +1,22 @@
-name: AzuriteImage
-
-on:
-  schedule:
-    - cron: '30 03 * * *'
-  push:
-  pull_request:
+name: Main Build and Push
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  FEDORA_VERSION: 41
 
+on:
+  workflow_call:
+    inputs:
+      fedora_version:
+        required: true
+        type: number
+        default: 41
+      is_stable:
+        required: true
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -27,11 +31,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        major_version: [41]
         include:
-          - major_version: 41
+          - major_version: ${{inputs.fedora_version}}
             is_latest: true
-            is_stable: true
+            is_stable: ${{inputs.is_stable}}
     
 
     steps:
@@ -97,7 +100,7 @@ jobs:
             ${{ steps.generate-tags.outputs.date }}
             ${{ steps.generate-tags.outputs.sha_short }}
           build-args: |
-            FEDORA_MAJOR_VERSION=${{ env.FEDORA_VERSION }}
+            FEDORA_MAJOR_VERSION=${{ inputs.fedora_version }}
           labels:
           oci: true
       

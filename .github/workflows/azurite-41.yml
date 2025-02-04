@@ -1,0 +1,18 @@
+name: Build Azurite Image for Kinoite 41
+on:
+  schedule:
+    - cron: '30 03 * * *'
+  push:
+  pull_request:
+
+jobs:
+  run-build:
+    strategy:
+      matrix:
+        fedora_version: [41]
+    name: Run
+    secrets: inherit
+    uses: ./.github/workflows/main.yml
+    with:
+      fedora_version: 41
+      is_stable: true

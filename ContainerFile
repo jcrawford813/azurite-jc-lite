@@ -3,6 +3,8 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-41}"
 ## Begin with a Kinoite Base Image
 FROM quay.io/fedora/fedora-kinoite:${FEDORA_MAJOR_VERSION}
 
+COPY os-release/os-release-template /etc/os-release
+RUN sed -i 's/\(FEDORA_VERSION\)/${FEDORA_MAJOR_VERSION}/g' /etc/os-release
 COPY etc /etc
 COPY usr /usr
 COPY azurite-first-setup /usr/bin
