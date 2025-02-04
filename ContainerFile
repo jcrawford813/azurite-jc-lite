@@ -34,10 +34,6 @@ RUN  rpm-ostree install \
 RUN rpm-ostree install \
         kmail \
         akonadi \
-        skanpage \
-        kate \
-        kwrite \
-        karp \
         libreoffice \
         vorta \
         borgbackup
