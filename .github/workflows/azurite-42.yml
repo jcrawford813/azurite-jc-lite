@@ -2,7 +2,7 @@ name: Build Azurite Image for Kinoite 42
 
 on:
   schedule:
-    - cron: '30 03 * * *'
+    - cron: '30 01 * * *'
   push:
   pull_request:
 
