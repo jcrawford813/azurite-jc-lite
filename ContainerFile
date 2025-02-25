@@ -16,7 +16,6 @@ RUN rpm-ostree override remove \
         plasma-discover-rpm-ostree \
         toolbox \
         mesa-va-drivers \
-        libavcodec-free \
         ffmpeg-free
 
 #Add rpm fusion packages
@@ -24,9 +23,11 @@ RUN rpm-ostree install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-#Add codecs       
+#Swap libavcodec
+RUN rpm-ostree remove libavcodec-free --install libavcodec-freeworld
+
+#Add other codecs       
 RUN rpm-ostree install \
-        libavcodec-freeworld \
         ffmpeg \
         mesa-va-drivers-freeworld \
         mesa-vdpau-drivers-freeworld \
