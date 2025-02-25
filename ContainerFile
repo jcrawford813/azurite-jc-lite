@@ -23,23 +23,31 @@ RUN rpm-ostree install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-#Swap libavcodec for accelerated ffmpeg versions.
-RUN rpm-ostree override replace --from repo='rpmfusion-free' --experimental \
-        --remove=libavcodec-free \
-        --remove=libavformat-free \
-        --remove=libavfilter-free \
-        --remove=libavutil-free \
-        --remove=libpostproc-free \
-        --remove=libswresample-free \
-        --remove=libswscale-free \
-        ffmpeg
-
-#Add other codecs       
+#Add accelerated mesa and heif codec.       
 RUN rpm-ostree install \
         mesa-va-drivers-freeworld \
         mesa-vdpau-drivers-freeworld \
         libheif-freeworld
 
+#Add GStreamer codecs (not sure if needed, just being safe.)
+RUN rpm-ostree install \
+        gstreamer1-plugin-libav \
+        gstreamer1-plugins-bad-free-extras \
+        gstreamer1-plugins-bad-freeworld \
+        gstreamer1-plugins-ugly \
+        gstreamer1-vaapi
+
+#Swap libavcodec for accelerated ffmpeg versions.
+RUN rpm-ostree override replace --from repo='rpmfusion-free' --experimental \
+        --remove=libavcodec-free \
+        --remove=libavformat-free \
+        --remove=libavfilter-free \
+        --remove=libavdevice-free \
+        --remove=libavutil-free \
+        --remove=libpostproc-free \
+        --remove=libswresample-free \
+        --remove=libswscale-free \
+        ffmpeg
 
 #Add extra core packages
 RUN  rpm-ostree install \
