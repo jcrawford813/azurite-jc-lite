@@ -24,7 +24,7 @@ RUN rpm-ostree install \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 #Swap libavcodec
-RUN rpm-ostree override replace --from repo='rpmfusion-free' --experimental --remove=libavcodec-free --remove=libavformat-free libavcodec-freeworld libavformat-freeworld
+RUN rpm-ostree override replace --from repo='rpmfusion-free' --experimental --remove=libavcodec-free --remove=libavformat-free libavcodec-freeworld
 
 #Add other codecs       
 RUN rpm-ostree install \
