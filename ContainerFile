@@ -26,6 +26,7 @@ RUN rpm-ostree install \
 
 #Add codecs       
 RUN rpm-ostree install \
+        libavcodec-freeworld \
         ffmpeg \
         mesa-va-drivers-freeworld \
         mesa-vdpau-drivers-freeworld \
