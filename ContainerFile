@@ -28,7 +28,6 @@ RUN rpm-ostree override replace --from repo='rpmfusion-free' --experimental \
         --remove=libavcodec-free \
         --remove=libavformat-free \
         --remove=libavfilter-free \
-        --remove=libavformat-free \
         --remove=libavutil-free \
         --remove=libpostproc-free \
         --remove=libswresample-free \
