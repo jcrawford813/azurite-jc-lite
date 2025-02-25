@@ -16,7 +16,6 @@ RUN rpm-ostree override remove \
         plasma-discover-rpm-ostree \
         toolbox \
         mesa-va-drivers \
-        mesa-vdpau-drivers \
         ffmpeg-free
 
 #Add rpm fusion packages
