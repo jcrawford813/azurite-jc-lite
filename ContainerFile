@@ -25,8 +25,8 @@ RUN rpm-ostree install \
 
 #Add accelerated mesa and heif codec.       
 RUN rpm-ostree install \
-        mesa-va-drivers-freeworld \
-        #mesa-vdpau-drivers-freeworld \
+        mesa-va-drivers-freeworld.x86_64 \
+        mesa-vdpau-drivers-freeworld.x86_64 \
         #vdpau-video-freeworld \
         libheif-freeworld
 
