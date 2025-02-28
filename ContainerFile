@@ -26,7 +26,8 @@ RUN rpm-ostree install \
 #Add accelerated mesa and heif codec.       
 RUN rpm-ostree install \
         mesa-va-drivers-freeworld \
-        mesa-vdpau-drivers-freeworld \
+        #mesa-vdpau-drivers-freeworld \
+        vdpau-video-freeworld \
         libheif-freeworld
 
 #Add GStreamer codecs (not sure if needed, just being safe.)
