@@ -60,7 +60,10 @@ RUN  rpm-ostree install \
         qemu-kvm \ 
         virt-manager \
         ksshaskpass \
-        corectrl
+        corectrl \
+        logiops \
+        solaar \
+        solaar-udev
 
 #Add Apps that have to be layered to work well, or that I prefer to be layerd. LO is in here because I prefer the KDE dialogs, which you don't get in flatpak.
 RUN rpm-ostree install \
