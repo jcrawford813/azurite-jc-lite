@@ -73,7 +73,7 @@ RUN rpm-ostree install \
         kate \
         filelight \
         haruna \
-        elisa \
+        elisa-player \
         neochat \
         kolourpaint \
         okular \
