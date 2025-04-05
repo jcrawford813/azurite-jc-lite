@@ -48,6 +48,7 @@ RUN rpm-ostree override replace --from repo='rpmfusion-free' --experimental \
         --remove=libpostproc-free \
         --remove=libswresample-free \
         --remove=libswscale-free \
+        libavcodec-freeworld \
         ffmpeg
 
 #Add extra core packages
