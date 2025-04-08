@@ -81,6 +81,7 @@ RUN rpm-ostree install \
         skanpage \
         gwenview \
         kgpg \
+        kcalc \
         kfind
 
 #Setup auto updates
