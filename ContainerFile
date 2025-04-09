@@ -79,6 +79,7 @@ RUN rpm-ostree install \
         kolourpaint \
         okular \
         skanpage \
+        tesseract \
         gwenview \
         kgpg \
         kcalc \
