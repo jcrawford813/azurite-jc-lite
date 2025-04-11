@@ -85,6 +85,8 @@ RUN rpm-ostree install \
         kcalc \
         kmail \
         kaddressbook \
+        korganizer \
+        merkuro \
         kfind
 
 #Setup auto updates
