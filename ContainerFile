@@ -87,7 +87,8 @@ RUN rpm-ostree install \
         kaddressbook \
         korganizer \
         merkuro \
-        kfind
+        kfind \
+        rssguard
 
 #Setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
