@@ -57,6 +57,7 @@ RUN  rpm-ostree install \
         rsms-inter-fonts \
         libvirt-daemon-config-network \
         libvirt-daemon-kvm \
+        swtpm-selinux \
         fish \
         qemu-kvm \ 
         virt-manager \
@@ -88,7 +89,6 @@ RUN rpm-ostree install \
         korganizer \
         merkuro \
         kfind \
-        rssguard \
         plasma-firewall-firewalld
 
 #Setup auto updates
