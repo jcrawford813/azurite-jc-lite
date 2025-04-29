@@ -91,7 +91,8 @@ RUN rpm-ostree install \
         korganizer \
         merkuro \
         kfind \
-        plasma-firewall-firewalld
+        plasma-firewall-firewalld \
+        gcc
 
 #Setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
