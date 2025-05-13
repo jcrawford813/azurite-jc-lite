@@ -18,39 +18,6 @@ RUN rpm-ostree override remove \
         mesa-va-drivers \
         ffmpeg-free
 
-#Add rpm fusion packages
-RUN rpm-ostree install \
-  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-#Add accelerated mesa and heif codec.       
-RUN rpm-ostree install \
-        mesa-va-drivers-freeworld.x86_64 \
-        mesa-vdpau-drivers-freeworld.x86_64 \
-        #vdpau-video-freeworld \
-        libheif-freeworld
-
-#Add GStreamer codecs (not sure if needed, just being safe.)
-RUN rpm-ostree install \
-        gstreamer1-plugin-libav \
-        gstreamer1-plugins-bad-free-extras \
-        gstreamer1-plugins-bad-freeworld \
-        gstreamer1-plugins-ugly \
-        gstreamer1-vaapi
-
-#Swap libavcodec for accelerated ffmpeg versions.
-RUN rpm-ostree override replace --from repo='rpmfusion-free' --experimental \
-        --remove=libavcodec-free \
-        --remove=libavformat-free \
-        --remove=libavfilter-free \
-        --remove=libavdevice-free \
-        --remove=libavutil-free \
-        --remove=libpostproc-free \
-        --remove=libswresample-free \
-        --remove=libswscale-free \
-        libavcodec-freeworld \
-        ffmpeg
-
 #Add extra core packages
 RUN  rpm-ostree install \
         distrobox \
@@ -65,34 +32,16 @@ RUN  rpm-ostree install \
 
 #Add KDE Apps and apps that have to be layered to work well, or that I prefer to be layerd. LO is in here because I prefer the KDE dialogs, which you don't get in flatpak.
 RUN rpm-ostree install \
-        libreoffice \
         vorta \
         borgbackup \
         logiops \
         solaar \
-        thunderbird \
-        krita \
-        digikam \
-        kwrite \
-        kate \
-        filelight \
-        haruna \
-        elisa-player \
-        neochat \
-        kolourpaint \
-        okular \
-        skanpage \
-        tesseract \
-        gwenview \
         kgpg \
-        kcalc \
         kmail \
         kaddressbook \
         korganizer \
         merkuro \
-        kfind \
-        plasma-firewall-firewalld \
-        gcc
+        plasma-firewall-firewalld
 
 #Setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \

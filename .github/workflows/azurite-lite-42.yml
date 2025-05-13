@@ -3,10 +3,6 @@ name: Build Azurite Image for Kinoite 42
 on:
   schedule:
     - cron: '00 12 * * *'
-  push:
-    paths-ignore:
-        - '*.md'
-  pull_request:
   workflow_dispatch:
 jobs:
   run-build:
