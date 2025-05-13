@@ -17,8 +17,8 @@ RUN rpm-ostree override remove \
         toolbox \
         mesa-va-drivers \
         ffmpeg-free \
-        firefox-langpacks \
-        firefox
+        firefox \
+        firefox-langpacks
 
 #Add extra core packages
 RUN  rpm-ostree install \
