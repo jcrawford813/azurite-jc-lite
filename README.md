@@ -22,7 +22,7 @@ systemctl reboot
 
 Then you can rebase to this untrusted image:
 ```
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/jcrawford813/azurite-lite-jc:42
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/jcrawford813/azurite-jc-lite:42
 systemctl reboot
 ```
 
