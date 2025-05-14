@@ -5,6 +5,7 @@ ARG FIREFOX_PWA_VERSION="${FIREFOX_PWA_VERSION:-2.14.1}"
 FROM quay.io/fedora/fedora-kinoite:${FEDORA_MAJOR_VERSION}
 
 ARG OS_VERSION="${OS_VERSION:-${FEDORA_MAJOR_VERSION}}"
+ARG PWA_VERSION="${PWA_VERSION:-${FIREFOX_PWA_VERSION}}"
 
 COPY os-release/os-release-template /etc/os-release
 RUN sed -i 's/FEDORA_VERSION/'"${OS_VERSION}"'/g' /etc/os-release
@@ -34,7 +35,7 @@ RUN  rpm-ostree install \
         ksshaskpass
 
 #Add the pwa package for firefox.
-RUN curl -fsSL "https://github.com/filips123/PWAsForFirefox/releases/download/v${FIREFOX_PWA_VERSION}/firefoxpwa-${FIREFOX_PWA_VERSION}-1.x86_64.rpm" -o /tmp/firefoxpwa.rpm && \
+RUN curl -fsSL "https://github.com/filips123/PWAsForFirefox/releases/download/v${PWA_VERSION}/firefoxpwa-${PWA_VERSION}-1.x86_64.rpm" -o /tmp/firefoxpwa.rpm && \
     rpm-ostree install /tmp/firefoxpwa.rpm && \
     rm -f /tmp/firefoxpwa.rpm 
 
