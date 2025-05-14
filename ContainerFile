@@ -13,6 +13,10 @@ COPY azurite-first-setup /usr/bin
 
 #Clean up packages to use the ones I want.
 RUN rpm-ostree override remove \
+        firefox \
+        firefox-langpacks
+        
+RUN rpm-ostree override remove \
         plasma-discover-rpm-ostree \
         toolbox \
         mesa-va-drivers \
