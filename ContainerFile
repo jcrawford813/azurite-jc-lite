@@ -14,7 +14,7 @@ COPY usr /usr
 COPY azurite-first-setup /usr/bin
 
 #Add the pwa package for firefox.
-RUN curl -fsSL 'https://github.com/filips123/PWAsForFirefox/releases/download/v'"${PWA_VERSION}"'/firefoxpwa-'"${PWA_VERSION}"'-1.x86_64.rpm' -o /tmp/firefoxpwa.rpm && \
+RUN curl -fsSL https://github.com/filips123/PWAsForFirefox/releases/download/v"${PWA_VERSION}"/firefoxpwa-"${PWA_VERSION}"-1.x86_64.rpm -o /tmp/firefoxpwa.rpm && \
     rpm-ostree install /tmp/firefoxpwa.rpm && \
     rm -f /tmp/firefoxpwa.rpm 
 
