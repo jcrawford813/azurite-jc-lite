@@ -36,7 +36,7 @@ RUN  rpm-ostree install \
         ksshaskpass
 
 #Add the pwa package for firefox.
-RUN curl -fsSL https://github.com/filips123/PWAsForFirefox/releases/download/v${FIREFOX_PWA_VERSION}/firefoxpwa-${FIREFOX_PWA_VERSION}-1.x86_64.rpm -o /tmp/firefoxpwa.rpm && \
+RUN curl -fsSL 'https://github.com/filips123/PWAsForFirefox/releases/download/v'"${FIREFOX_PWA_VERSION}"'/firefoxpwa-'"${FIREFOX_PWA_VERSION}"'-1.x86_64.rpm' -o /tmp/firefoxpwa.rpm && \
     rpm-ostree install /tmp/firefoxpwa.rpm && \
     rm -f /tmp/firefoxpwa.rpm 
 
