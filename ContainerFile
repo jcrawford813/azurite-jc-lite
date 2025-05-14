@@ -1,4 +1,5 @@
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-41}"
+ARG FIREFOX_PWA_VERSION="${FIREFOX_PWA_VERSION:-2.14.1}"
 
 ## Begin with a Kinoite Base Image
 FROM quay.io/fedora/fedora-kinoite:${FEDORA_MAJOR_VERSION}
@@ -33,6 +34,11 @@ RUN  rpm-ostree install \
         qemu-kvm \ 
         virt-manager \
         ksshaskpass
+
+#Add the pwa package for firefox.
+RUN curl -fsSL https://github.com/filips123/PWAsForFirefox/releases/download/v${FIREFOX_PWA_VERSION}/firefoxpwa-${FIREFOX_PWA_VERSION}-1.x86_64.rpm -o /tmp/firefoxpwa.rpm && \
+    rpm-ostree install /tmp/firefoxpwa.rpm && \
+    rm -f /tmp/firefoxpwa.rpm 
 
 #Add KDE Apps and apps that have to be layered to work well, or that I prefer to be layerd. LO is in here because I prefer the KDE dialogs, which you don't get in flatpak.
 RUN rpm-ostree install \

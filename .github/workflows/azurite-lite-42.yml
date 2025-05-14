@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         fedora_version: [42]
+        firefoxpwa_version: ['2.14.1']
     name: Run
     secrets: inherit
     uses: ./.github/workflows/main.yml
@@ -20,4 +21,5 @@ jobs:
       id-token: write
     with:
       fedora_version: 42
+      firefoxpwa_version: '2.14.1'
       is_stable: false

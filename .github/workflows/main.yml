@@ -13,6 +13,10 @@ on:
         required: true
         type: number
         default: 41
+      firefoxpwa_version:
+        required: true
+        type: string
+        default: '2.14.1'
       is_stable:
         required: true
         type: boolean
@@ -33,6 +37,7 @@ jobs:
       matrix:
         include:
           - major_version: ${{inputs.fedora_version}}
+            pwa_version: ${{inputs.firefoxpwa_version}}
             is_latest: true
             is_stable: ${{inputs.is_stable}}
     
@@ -101,6 +106,7 @@ jobs:
             ${{ steps.generate-tags.outputs.sha_short }}
           build-args: |
             FEDORA_MAJOR_VERSION=${{ inputs.fedora_version }}
+            FIREFOX_PWA_VERSION=${{ inputs.firefoxpwa_version }}
             OS_VERSION=${{ inputs.fedora_version }}
           labels:
           oci: true
