@@ -114,6 +114,14 @@ if [ "$?" != 0 ] ; then
           "Installing Elisa Failed"
 fi
 
+echo "# Installing Haruna"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.haruna
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Haruna Failed"
+fi
+
+
 echo "# Installing Kcalc"
 /usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.kcalc
 if [ "$?" != 0 ] ; then
