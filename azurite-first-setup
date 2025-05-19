@@ -8,7 +8,6 @@ fi
 
 echo "# Waiting for Internet connection"
 until /usr/bin/ping -q -c 1 flathub.org; do sleep 1; done
-echo "00"
 
 echo "# Removing Filtered Flathub Repository"
 /usr/bin/flatpak remote-delete flathub --force ||:
@@ -17,7 +16,6 @@ if [ "$?" != 0 ] ; then
           "Removing Filtered Flathub Repo Failed"
         exit 1
 fi
-echo "3"
 
 echo "# Enabling Flathub Repository"
 /usr/bin/flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -26,7 +24,6 @@ if [ "$?" != 0 ] ; then
           "Adding Flathub Repo Failed"
         exit 1
 fi
-echo "5"
 
 echo "Removing all preinstalled Flatpaks"
 /usr/bin/flatpak remove --system --noninteractive --all ||:
@@ -35,7 +32,6 @@ if [ "$?" != 0 ] ; then
           "Removing all preinstalled flatpaks failed"
         exit 1
 fi
-echo "20"
 
 echo "# Removing Fedora Flatpak Repository"
 /usr/bin/flatpak remote-delete fedora --force ||:
@@ -44,7 +40,6 @@ if [ "$?" != 0 ] ; then
           "Removing Fedora Flatpak Repo Failed"
         exit 1
 fi
-echo "25"
 
 echo "# Installing Steam"
 /usr/bin/flatpak install --user --or-update --noninteractive flathub com.valvesoftware.Steam
@@ -53,7 +48,6 @@ if [ "$?" != 0 ] ; then
           "Installing Steam Failed"
         exit 1
 fi
-echo "50"
 
 echo "# Installing Heroic Launcher"
 /usr/bin/flatpak install --user --or-update --noninteractive flathub com.heroicgameslauncher.hgl
@@ -62,7 +56,6 @@ if [ "$?" != 0 ] ; then
           "Installing Heroic Failed"
         exit 1
 fi
-echo "60"
 
 echo "# Installing Synology Drive Client"
 /usr/bin/flatpak install --user --or-update --noninteractive flathub com.synology.SynologyDrive
@@ -71,8 +64,6 @@ if [ "$?" != 0 ] ; then
           "Installing Synology Drive Failed"
         exit 1
 fi
-
-echo "80"
 
 echo "# Installing Digikam"
 /usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.digikam
@@ -90,13 +81,70 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 
-echo "90"
+echo "# Installing Neochat"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.neochat
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Neochat Failed"
+        exit 1
+fi
+
+echo "# Installing Kate"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.kate
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Kate Failed"
+        exit 1
+fi
+
+echo "# Installing Elisa"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.elisa
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Elisa Failed"
+        exit 1
+fi
+
+echo "# Installing Kcalc"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.kcalc
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Kcalc Failed"
+        exit 1
+fi
+
+echo "# Installing Virt-Manager"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.virt_manager.virt-manager
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.virt_manager.virt_manager.Extension.Qemu
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Virt Manager Failed"
+        exit 1
+fi
+
+echo "# Installing Firefox"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.mozilla.firefox
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Firefox Failed"
+        exit 1
+fi
+
+echo "# Installing Thunderbird"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.mozilla.thunderbird
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Thunderbird Failed"
+        exit 1
+fi
+
+echo "# Installing Libreoffice"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.libreoffice.LibreOffice
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Thunderbird Failed"
+        exit 1
+fi
 
 mkdir -p "$HOME"/.config/azurite/
 touch "$HOME"/.config/azurite/firstboot-done
-
-if [ "$?" != 0 ] ; then
-        kdialog --error \
-          "Firstboot Configuration Error"
-fi
-echo "100"

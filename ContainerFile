@@ -1,11 +1,9 @@
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-41}"
-ARG FIREFOX_PWA_VERSION="${FIREFOX_PWA_VERSION:-2.14.1}"
 
 ## Begin with a Kinoite Base Image
 FROM quay.io/fedora/fedora-kinoite:${FEDORA_MAJOR_VERSION}
 
 ARG OS_VERSION="${OS_VERSION:-${FEDORA_MAJOR_VERSION}}"
-ARG PWA_VERSION="${PWA_VERSION:-${FIREFOX_PWA_VERSION}}"
 
 COPY os-release/os-release-template /etc/os-release
 RUN sed -i 's/FEDORA_VERSION/'"${OS_VERSION}"'/g' /etc/os-release
@@ -31,27 +29,16 @@ RUN rpm-ostree override remove \
 RUN  rpm-ostree install \
         distrobox \
         rsms-inter-fonts \
-        libvirt-daemon-config-network \
-        libvirt-daemon-kvm \
-        swtpm-selinux \
         fish \
-        qemu-kvm \ 
-        virt-manager \
-        ksshaskpass
+        ksshaskpass \
+        plasma-firewall-firewalld
 
-#Add KDE Apps and apps that have to be layered to work well, or that I prefer to be layerd. LO is in here because I prefer the KDE dialogs, which you don't get in flatpak.
+#Add apps that have to be layered to work well, or that I prefer to be layered.
 RUN rpm-ostree install \
         vorta \
         borgbackup \
         logiops \
-        solaar \
-        kgpg \
-        kmail \
-        kaddressbook \
-        korganizer \
-        merkuro \
-        qt6-qtlocation \
-        plasma-firewall-firewalld
+        solaar
 
 #Setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
