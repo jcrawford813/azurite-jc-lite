@@ -14,7 +14,6 @@ echo "# Removing Filtered Flathub Repository"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Removing Filtered Flathub Repo Failed"
-        exit 1
 fi
 
 echo "# Enabling Flathub Repository"
@@ -22,7 +21,6 @@ echo "# Enabling Flathub Repository"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Adding Flathub Repo Failed"
-        exit 1
 fi
 
 echo "Removing all preinstalled Flatpaks"
@@ -30,7 +28,6 @@ echo "Removing all preinstalled Flatpaks"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Removing all preinstalled flatpaks failed"
-        exit 1
 fi
 
 echo "# Removing Fedora Flatpak Repository"
@@ -38,7 +35,6 @@ echo "# Removing Fedora Flatpak Repository"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Removing Fedora Flatpak Repo Failed"
-        exit 1
 fi
 
 echo "# Installing Steam"
@@ -46,7 +42,6 @@ echo "# Installing Steam"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Steam Failed"
-        exit 1
 fi
 
 echo "# Installing Heroic Launcher"
@@ -54,7 +49,6 @@ echo "# Installing Heroic Launcher"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Heroic Failed"
-        exit 1
 fi
 
 echo "# Installing Synology Drive Client"
@@ -62,7 +56,6 @@ echo "# Installing Synology Drive Client"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Synology Drive Failed"
-        exit 1
 fi
 
 echo "# Installing Digikam"
@@ -70,7 +63,6 @@ echo "# Installing Digikam"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Digikam Failed"
-        exit 1
 fi
 
 echo "# Installing Krita"
@@ -78,7 +70,27 @@ echo "# Installing Krita"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Krita Failed"
-        exit 1
+fi
+
+echo "# Installing Gwenview"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.gwenview
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Gwenview Failed"
+fi
+
+echo "# Installing Okular"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.okular
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Okular Failed"
+fi
+
+echo "# Installing Skanpage"
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.kde.skanpage
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Skanpage Failed"
 fi
 
 echo "# Installing Neochat"
@@ -86,7 +98,6 @@ echo "# Installing Neochat"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Neochat Failed"
-        exit 1
 fi
 
 echo "# Installing Kate"
@@ -94,7 +105,6 @@ echo "# Installing Kate"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Kate Failed"
-        exit 1
 fi
 
 echo "# Installing Elisa"
@@ -102,7 +112,6 @@ echo "# Installing Elisa"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Elisa Failed"
-        exit 1
 fi
 
 echo "# Installing Kcalc"
@@ -110,7 +119,6 @@ echo "# Installing Kcalc"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Kcalc Failed"
-        exit 1
 fi
 
 echo "# Installing Virt-Manager"
@@ -119,7 +127,6 @@ echo "# Installing Virt-Manager"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Virt Manager Failed"
-        exit 1
 fi
 
 echo "# Installing Firefox"
@@ -127,7 +134,6 @@ echo "# Installing Firefox"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Firefox Failed"
-        exit 1
 fi
 
 echo "# Installing Thunderbird"
@@ -135,7 +141,6 @@ echo "# Installing Thunderbird"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Thunderbird Failed"
-        exit 1
 fi
 
 echo "# Installing Libreoffice"
@@ -143,7 +148,6 @@ echo "# Installing Libreoffice"
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Thunderbird Failed"
-        exit 1
 fi
 
 mkdir -p "$HOME"/.config/azurite/
