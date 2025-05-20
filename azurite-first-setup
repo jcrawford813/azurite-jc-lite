@@ -145,7 +145,7 @@ if [ "$?" != 0 ] ; then
 fi
 
 echo "# Installing Thunderbird"
-/usr/bin/flatpak install --user --or-update --noninteractive flathub org.mozilla.thunderbird
+/usr/bin/flatpak install --user --or-update --noninteractive flathub org.mozilla.Thunderbird
 if [ "$?" != 0 ] ; then
         kdialog --error \
           "Installing Thunderbird Failed"
