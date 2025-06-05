@@ -31,15 +31,11 @@ RUN  rpm-ostree install \
         rsms-inter-fonts \
         fish \
         ksshaskpass \
-        corectrl \
         plasma-firewall-firewalld
 
 #Add apps that have to be layered to work well, or that I prefer to be layered.
 RUN rpm-ostree install \
-        vorta \
-        borgbackup \
-        logiops \
-        solaar
+        borgbackup
 
 #Setup auto updates
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
