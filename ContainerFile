@@ -28,7 +28,6 @@ RUN rpm-ostree override remove \
 #Add extra core packages
 RUN  rpm-ostree install \
         distrobox \
-        rsms-inter-fonts \
         fish \
         ksshaskpass \
         plasma-firewall-firewalld
