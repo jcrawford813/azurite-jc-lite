@@ -16,21 +16,6 @@ RUN curl -fsSL https://github.com/filips123/PWAsForFirefox/releases/download/v2.
     rpm-ostree install /tmp/firefoxpwa.rpm && \
     rm -f /tmp/firefoxpwa.rpm 
 
-#Add the long term support kernel.
-RUN curl -fsSl https://copr.fedorainfracloud.org/coprs/kwizart/kernel-longterm-6.12/repo/fedora-42/kwizart-kernel-longterm-6.12-fedora-42.repo -o /etc/yum.repos.d/kwizart-kernel-longterm-6.12-fedora-42.repo
-#RUN chown root:root /etc/yum.repos.d/* && \
-#        chmod 744 /etc/yum.repos.d/* && \
-#        chcon -R system_u:object_r:system_conf_t:s0 /etc/yum.repos.d/
-
-RUN rpm-ostree override remove \
-        kernel \
-        kernel-{core,modules,modules-extra} \
-        --install kernel-longterm \
-        --install kernel-longterm-core \
-        --install kernel-longterm-modules \
-        --install kernel-longterm-modules-extra \
-        --install kernel-longterm-devel-matched
-
 #Clean up packages to use the ones I want.
 RUN rpm-ostree override remove \
         firefox \
